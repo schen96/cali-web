@@ -129,25 +129,28 @@
     {#if mode === 0}
         <Label for="textarea-id" class="mb-2">DNA Sequence</Label>
         <div class="wrapper" style="position: relative;">
-            <Textarea bind:value="{textAreaContent}" id="textarea-id" placeholder="Your message" rows="6" name="message">
+            <Textarea bind:value="{textAreaContent}" id="textarea-id" placeholder="DNA Bases here" rows="6" name="message">
 
 
             </Textarea>
             <div class="operators px-4 py-4" style="position: absolute; bottom: 0; right: 0; z-index: 3;">
-                <button class="material-symbols-outlined" style="font-size: 18px" on:click={toClipboard}>
+                <button class="material-symbols-outlined"
+                        style="font-size: 18px" on:click={toClipboard} title="Copy to clipboard">
                     content_copy
                 </button>
-                <button class="material-symbols-outlined mx-4" style="font-size: 18px" on:click={undoOperation}>
+                <button class="material-symbols-outlined mx-4" style="font-size: 18px" on:click={undoOperation}
+                        title="Undo last operation">
                     undo
                 </button>
-                <button class="material-symbols-outlined" style="font-size: 18px" on:click={cleanSpace}>
+                <button class="material-symbols-outlined" style="font-size: 18px" on:click={cleanSpace}
+                        title="Reset text area">
                     delete
                 </button>
             </div>
         </div>
 
-        <Button small color="alternative" class="mt-2" on:click={cleanupDna}>Cleanup</Button>
-        <Button small color="alternative" class="mt-2" on:click={reverseComplement}>Reverse Complement</Button>
+        <Button small color="alternative" class="mt-2" title="Removes dashes" on:click={cleanupDna}>Cleanup</Button>
+        <Button small color="alternative" class="mt-2" title="Reverse complement" on:click={reverseComplement}>Reverse Complement</Button>
 
         {#if operations.length}
             <Hr/>
@@ -159,7 +162,7 @@
                             keyboard_arrow_right
                         </span>
                     {/if}
-                    <button on:click={() => selectOperation(operation.key)}>
+                    <button on:click={() => selectOperation(operation.key)} title="Go to this operation">
                         <Badge color={i === 0? 'primary':'dark'} class="mr-2 mt-4">{operation.operation}</Badge>
                     </button>
                 {/each}
