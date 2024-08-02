@@ -73,7 +73,7 @@
         // Split the DNA sequence into an array, reverse it, and map each base to its complement
         let reverse = textAreaContent.split('')
             .reverse()
-            .map(base => complement[base])
+            .map(base => complement[base] || base)
             .join('');
 
         if (reverse === textAreaContent) {
